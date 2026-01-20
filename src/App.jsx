@@ -8,7 +8,7 @@ function App() {
     <BrowserRouter>
       <div className="app">
         <header>
-          <h1>Photo Gallery</h1>
+          <h1>Photo Gallery (Testing Structure)</h1>
         </header>
         <main>
           <Routes>

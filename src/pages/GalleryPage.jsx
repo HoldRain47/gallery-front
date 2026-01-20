@@ -10,9 +10,10 @@ function GalleryPage() {
   const fetchPhotos = async () => {
     try {
       const data = await getPhotos()
-      setPhotos(data)
+      setPhotos(data || [])
     } catch (error) {
       console.error('Failed to fetch photos:', error)
+      setPhotos([]) // 에러 발생 시 빈 배열로 초기화하여 렌더링 오류 방지
     } finally {
       setLoading(false)
     }
@@ -29,7 +30,7 @@ function GalleryPage() {
   return (
     <div className="gallery-page">
       <UploadForm onUploadSuccess={fetchPhotos} />
-      
+
       <div className="photo-grid">
         {photos.length === 0 ? (
           <p>사진이 없습니다. 첫 번째 사진을 업로드하세요!</p>
